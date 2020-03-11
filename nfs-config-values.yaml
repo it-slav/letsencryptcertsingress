@@ -1,0 +1,16 @@
+replicaCount: 2
+
+nfs:
+  server: 10.1.1.94
+  path: /data/k8s/
+
+# For creating the StorageClass automatically:
+storageClass:
+  defaultClass: true
+
+  # Set a StorageClass name
+  # Ignored if storageClass.create is false
+  name: nfs-storage
+
+  # When set to false your PVs will not be archived by the provisioner upon deletion of the PVC.
+  archiveOnDelete: false
