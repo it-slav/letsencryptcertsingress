@@ -1,0 +1,40 @@
+### example deployment configuration file
+### scf-config-values.yaml
+  
+env:
+  DOMAIN: cap1.suse.ninja
+  UAA_HOST: uaa.cap1.suse.ninja
+  UAA_PORT: 443
+  UAA_PUBLIC_PORT: 433
+  GARDEN_ROOTFS_DRIVER: "btrfs"
+  
+kube:
+  storage_class:
+    persistent: "nfs-storage"
+  registry:
+    hostname: "registry.suse.com"
+    username: ""
+    password: ""
+  organization: "cap"   
+
+          
+secrets:
+  CLUSTER_ADMIN_PASSWORD: password
+  UAA_ADMIN_CLIENT_SECRET: password
+
+enable:
+  uaa: true
+  eirini: false
+  autoscaler: false
+
+config:
+  HA: true
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+  hosts:
+    - cap1.suse.ninja
+    - uaa.cap1.suse.ninja
