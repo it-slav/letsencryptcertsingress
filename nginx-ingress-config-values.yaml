@@ -1,0 +1,18 @@
+# Create a specific service account
+serviceAccount:
+  create: true
+  name: nginx-ingress
+
+# Publish services on port HTTPS/443
+controller:
+  service:
+    enableHttp: false
+    externalIPs:
+      - 10.1.1.78
+      - 10.1.1.79
+      - 10.1.1.80
+      - 10.1.1.81
+  metrics:
+    enabled: true
+  extraArgs: {default-ssl-certificate: "kube-system/default-tls"}
+  replicaCount: 3
