@@ -1,0 +1,30 @@
+console:
+  service:
+    ingress:
+      ## If true, Ingress will be created
+      enabled: true
+
+      ## Additional annotations
+      annotations: {cert-manager.io/cluster-issuer: "letsencrypt-production"}
+      ## Additional labels
+      extraLabels: {}
+
+      ## Host for the ingress
+      # Defaults to console.[env.Domain] if env.Domain is set and host is not
+      host: stratos.suse.ninja
+
+      # Name of secret containing TLS certificate
+      secretName: stratos-ingress-cert
+
+      # crt and key for TLS Certificate (this chart will create the secret based on these)
+
+  techPreview: true
+
+  # Use local admin user instead of UAA - set to a password to enable
+  localAdminPassword: <PASSWORD>
+
+storageClass: nfs-storage
+mariadb:
+  persistence:
+    enabled: true
+    storageClass: nfs-storage
