@@ -35,6 +35,3 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
     nginx.ingress.kubernetes.io/proxy-body-size: 1024m
-  hosts:
-    - cap1.suse.ninja
-    - uaa.cap1.suse.ninja
